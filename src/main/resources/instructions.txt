@@ -1,0 +1,7 @@
+Welcome to Hall Booking App!
+Use the following API end points :
+
+1) /getAllBookings    | to get all bookings                                                | GetRequest   | No params/request body
+2) /getBookings       | to get bookings in a date range                                    | PostRequest  | request body -> startDate, endDate
+3) /hallAvailability  | to get available halls for a given date,time and Request Capacity  | PostRequest  | request body -> requestDate, startTime, endTime, reqCapacity
+4) /requestBooking    | to book a hall for a given date,time and capacity                  | PostRequest  | request body -> requestorId, requestorName, requestDate, startTime, endTime, reqCapacity, hallName
