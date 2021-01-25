@@ -42,26 +42,27 @@ public class HallBookingController {
 	public String instructions() {
 
 		try {
-			FileInputStream inputStream = null;
-			ClassLoader classLoader = this.getClass().getClassLoader();
-			File configFile = new File(classLoader.getResource("instructions.txt").getFile());
-
-			inputStream = new FileInputStream(configFile);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-			StringBuilder stringBuilder = new StringBuilder();
-			String line = null;
-			String ls = System.getProperty("line.separator");
-			while ((line = reader.readLine()) != null) {
-				stringBuilder.append(line);
-				stringBuilder.append("\n");
-			}
-			// delete the last new line separator
-			stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-			reader.close();
-
-			String content = stringBuilder.toString();
-
-			return content;
+			/*
+			 * FileInputStream inputStream = null; ClassLoader classLoader =
+			 * this.getClass().getClassLoader(); File configFile = new
+			 * File(classLoader.getResource("instructions.txt").getFile());
+			 * 
+			 * inputStream = new FileInputStream(configFile); BufferedReader reader = new
+			 * BufferedReader(new InputStreamReader(inputStream)); StringBuilder
+			 * stringBuilder = new StringBuilder(); String line = null; String ls =
+			 * System.getProperty("line.separator"); while ((line = reader.readLine()) !=
+			 * null) { stringBuilder.append(line); stringBuilder.append("\n"); } // delete
+			 * the last new line separator stringBuilder.deleteCharAt(stringBuilder.length()
+			 * - 1); reader.close();
+			 * 
+			 * String content = stringBuilder.toString();
+			 */
+			String response = "Welcome to Hall Booking App! \n Use the following API end points : "
+					+ "\n 1) /getAllBookings    | to get all bookings                                                | GetRequest   | No params/request body "
+					+ "\n 2) /getBookings       | to get bookings in a date range                                    | PostRequest  | request body -> startDate, endDate"
+					+ "\n 3) /hallAvailability  | to get available halls for a given date,time and Request Capacity  | PostRequest  | request body -> requestDate, startTime, endTime, reqCapacity"
+					+ "\n 4) /requestBooking    | to book a hall for a given date,time and capacity                  | PostRequest  | request body -> requestorId, requestorName, requestDate, startTime, endTime, reqCapacity, hallName";
+			return response;
 		} catch (Exception e) {
 			return "Exception : " + e;
 		}
